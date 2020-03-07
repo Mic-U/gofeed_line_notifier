@@ -36,7 +36,6 @@ func isLaterThanLatestPublished(item *gofeed.Item) bool {
 
 func updateLatestPublished(selected []*gofeed.Item) {
 	for _, item := range selected {
-		fmt.Println(item.PublishedParsed)
 		if item.PublishedParsed.UTC().After(latestPublished) {
 			latestPublished = item.PublishedParsed.UTC()
 		}
