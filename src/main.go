@@ -8,7 +8,7 @@ import (
 	"github.com/mmcdole/gofeed"
 )
 
-const (
+var (
 	//RSSURL RSSフィードの URL
 	RSSURL = os.Getenv("RSS_URL")
 )
