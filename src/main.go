@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/Mic-U/gofeed_line_notifier/src/notifier"
+	"github.com/Mic-U/gofeed_line_notifier/src/selector"
 	"github.com/mmcdole/gofeed"
 )
 
 const (
 	//RSSURL RSSフィードの URL
-	RSSURL = "http://feeds.feedburner.com/AmazonWebServicesBlog"
+	RSSURL = os.Getenv("RSS_URL")
 )
 
 func main() {
@@ -20,12 +21,16 @@ func main() {
 		return
 	}
 	items := feed.Items
-	item := items[0]
-	message := notifier.Message{
-		Type: "text",
-		Text: item.Title + "\n" + item.Link,
+	selected := selector.SelectNewNotifications(items)
+
+	if len(selected) == 0 {
+		fmt.Println("No new articles")
+		return
 	}
-	messages := notifier.PostMessages{Messages: []notifier.Message{message}}
-	fmt.Println(messages)
-	notifier.PostBroadcast(messages)
+	// message := notifier.Message{
+	// 	Type: "text",
+	// 	Text: item.Title + "\n" + item.Link,
+	// }
+	// messages := notifier.PostMessages{Messages: []notifier.Message{message}}
+	// notifier.PostBroadcast(messages)
 }
