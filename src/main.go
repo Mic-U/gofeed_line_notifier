@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/Mic-U/gofeed_line_notifier/src/notifier"
 	"github.com/Mic-U/gofeed_line_notifier/src/selector"
@@ -16,6 +17,14 @@ var (
 
 func main() {
 	fp := gofeed.NewParser()
+
+	for {
+		exec(fp)
+		time.Sleep(time.Minute * 5)
+	}
+}
+
+func exec(fp *gofeed.Parser) {
 	feed, err := fp.ParseURL(RSSURL)
 	if err != nil {
 		fmt.Printf("Error: %s\n", err)
@@ -38,7 +47,6 @@ func main() {
 		Messages: messages,
 	}
 	notifier.PostBroadcast(postMessages)
-
 }
 
 func convertItemsToMessages(items []*gofeed.Item) []notifier.Message {
