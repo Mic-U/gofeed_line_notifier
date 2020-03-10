@@ -19,7 +19,16 @@ $ ./dist/exec
 
 ### Docker
 
+### Build Image
+
 ```
 $ docker image build -t gofeed_line_notifier .
 $ docker container run -ti --rm gofeed_line_notifier:latest -e RSS_URL={URL of RSS Feed} -e LINE_ACCESS_TOKEN={Your Access Token}
+```
+
+### Pull Image
+
+```
+$ docker login -u {GITHUB_USER_NAME -p {GITHUB_ACCESS_TOKEN} docker.pkg.github.com
+docker pull docker.pkg.github.com/mic-u/gofeed_line_notifier/beta:1.0
 ```
