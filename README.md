@@ -30,5 +30,5 @@ $ docker container run -ti --rm gofeed_line_notifier:latest -e RSS_URL={URL of R
 
 ```
 $ docker login -u {GITHUB_USER_NAME} -p {GITHUB_ACCESS_TOKEN} docker.pkg.github.com
-docker pull docker.pkg.github.com/mic-u/gofeed_line_notifier/beta:1.0
+$ docker pull docker.pkg.github.com/mic-u/gofeed_line_notifier/beta:1.0
 ```
