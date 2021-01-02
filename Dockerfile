@@ -1,4 +1,4 @@
-FROM golang:1.14.2 AS build-env
+FROM golang:1.15.6 AS build-env
 
 COPY . /go/src/nitifier
 WORKDIR /go/src/nitifier
