@@ -1,2 +1,7 @@
 .devcontainer
 dist
+
+.editorconfig
+.gitignore
+LICENSE
+README.md
